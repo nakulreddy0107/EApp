@@ -20,6 +20,7 @@ namespace API.Controllers
         public AccountController(DataContext context, ITokenService tokenService)
         {
             _context = context;
+            _tokenService=tokenService;
         }
 
         [HttpPost("register")]
@@ -45,10 +46,7 @@ namespace API.Controllers
             return mydto;
         }
 
-        private ActionResult<UserDto> BadRequest(string v)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
@@ -75,10 +73,7 @@ namespace API.Controllers
             return mydto;
         }
 
-        private ActionResult<UserDto> Unauthorized(string v)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         private async Task<bool> UserExists(string username)
         {
